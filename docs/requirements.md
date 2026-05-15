@@ -65,11 +65,17 @@
 - [ ] Fenced code blocks rendered with syntax highlighting for common languages
 - [ ] Language auto-detected from the fence info string
 
-### Mermaid diagrams
+### Diagrams
 
-- [ ] Fenced code blocks tagged `mermaid` are rendered as diagrams
-- [ ] Diagram rendering must stay within the single-binary constraint (no external process or network call required at runtime)
-- [ ] Define fallback behavior when a diagram cannot be rendered (e.g., show raw source)
+Terminal mode uses **GoAT** (Go ASCII Tool — pure Go, zero CGO):
+
+- [ ] Fenced code blocks tagged `goat` are rendered as ASCII diagrams in the terminal
+- [ ] In web mode, GoAT blocks are rendered as inline SVG
+- [ ] `mermaid` tagged blocks are rendered in web mode only via a bundled Mermaid JS asset (no network call at runtime); in terminal mode they fall back to displaying the raw source
+
+Fallback behavior (both diagram types):
+
+- [ ] When a diagram cannot be rendered, display the raw source as a code block with a notice
 
 ---
 
