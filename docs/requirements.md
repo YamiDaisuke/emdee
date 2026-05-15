@@ -79,7 +79,9 @@ Fallback behavior (both diagram types):
 
 ---
 
-## Web Mode (phase TBD)
+## Phase 3 — Web Mode
+
+The web visualizer must work **completely offline** — all assets (CSS, JS, fonts, the Mermaid JS library) are embedded in the binary at build time. No CDN calls, no external network requests at runtime.
 
 - [ ] A `--web` flag (or subcommand) spawns a local HTTP server and opens the visualizer in the default browser
 - [ ] All rendering features available in terminal mode are also available in web mode
@@ -87,6 +89,7 @@ Fallback behavior (both diagram types):
 - [ ] File and tree auto-refresh behave the same as terminal mode (e.g., via WebSocket or SSE push)
 - [ ] Server binds to localhost only; port is configurable, with a sensible default
 - [ ] Server shuts down when the process is terminated
+- [ ] All static assets are embedded via `go:embed` — no files are read from disk at runtime
 
 ---
 
