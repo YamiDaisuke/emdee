@@ -13,10 +13,11 @@ description: Use when the Scrum Master signals all tasks in a spec are done — 
 
 ## QA checklist
 
-1. Does each acceptance criterion across all tasks pass?
-2. Does the feature satisfy the applicable functional requirements in `docs/REQUIREMENTS.md`?
-3. Are edge cases and error states handled correctly?
-4. Are non-functional requirements met (performance, accessibility, security — as applicable)?
+1. Note the spec's `Version:`. If it changed after development started, confirm the implementation reflects the current version before continuing.
+2. Does each acceptance criterion across all tasks pass?
+3. Does the feature satisfy the applicable functional requirements in `docs/REQUIREMENTS.md`?
+4. Are edge cases and error states handled correctly?
+5. Are non-functional requirements met (performance, accessibility, security — as applicable)?
 
 ## Output
 

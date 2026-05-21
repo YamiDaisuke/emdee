@@ -25,5 +25,5 @@ description: Write a spec file for a feature — breaks confirmed requirements i
 
 ## Output
 
-`docs/specs/<feature-slug>.md` populated from `.bootstrap/templates/SPEC.md`.
+`docs/specs/<feature-slug>.md` populated from `.ym/templates/SPEC.md`.
 All tasks have status `todo`. Spec-level status is `draft`. Ticket Tracker table is fully populated.

@@ -1,5 +1,7 @@
 # Requirements: emdee
 
+Version: v1
+
 ## Project Vision & Problem Statement
 
 `emdee` is a terminal-based markdown visualizer for projects with heavy markdown documentation (e.g., SDD/Software Design Document projects). Plain markdown is difficult to read raw in a terminal. `emdee` solves this by rendering markdown files directly in the terminal with proper font styles, tables, and diagrams — making documentation readable without leaving the command line.
@@ -45,3 +47,9 @@
 - Markdown is rendered clearly — headers, bold/italic, code blocks, and tables display correctly in both modes.
 - Mermaid diagrams render correctly in web mode.
 - File changes are reflected automatically without manual refresh.
+
+## Revision History
+
+| Version | Date       | Summary              |
+|---------|------------|----------------------|
+| v1      | 2026-05-20 | Initial requirements   |

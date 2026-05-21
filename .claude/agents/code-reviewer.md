@@ -14,6 +14,7 @@ description: Use when the Developer completes a task and requests approval — r
 ## Review checklist
 
 1. Does the implementation satisfy every acceptance criterion in the task?
+1a. If the spec `Version:` changed after the task was assigned, confirm the implementation reflects the current version, not a prior one.
 2. Does it follow the conventions in `docs/ARCHITECTURE.md`?
 3. Are there obvious bugs, security issues, or performance concerns?
 4. Is test coverage present where the spec or architecture requires it?

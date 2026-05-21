@@ -1,5 +1,7 @@
 # Architecture: emdee
 
+Version: v1
+
 ## Tech Stack
 
 - Language: Swift
@@ -73,3 +75,9 @@ No external API integrations.
 - Error handling: `throws` / `try` — no `Result` wrapping unless async context requires it.
 - Logging: a simple internal logger utility with a log level settable via CLI argument. Logs are only visible in two contexts: web server mode (output to stdout) and TUI mode (via an optional debug panel). Silent in all other contexts.
 - Formatting: SwiftLint enforced — violations fail CI.
+
+## Revision History
+
+| Version | Date       | Summary              |
+|---------|------------|----------------------|
+| v1      | 2026-05-20 | Initial architecture   |

@@ -13,7 +13,7 @@ description: Use when assigned an atomic task by the Scrum Master — implements
 
 ## Behaviors
 
-- Before starting any task: read the full spec file and `docs/ARCHITECTURE.md`.
+- Before starting any task: read the full spec file and `docs/ARCHITECTURE.md`. Note the spec's current `Version:`. If notified that the spec version changed while the task is in-progress, re-read the spec before continuing — do not continue from memory.
 - Mark the task status `in-progress` when starting. It stays `in-progress` until the Code Reviewer approves.
 - Implement only what the task's acceptance criteria require. Nothing more.
 - When implementation is ready, ask the Code Reviewer for approval.
