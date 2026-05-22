@@ -39,11 +39,11 @@ Establishes the SPM package structure, third-party dependencies, SwiftLint enfor
 **Description:** Add a `.swiftlint.yml` at the repo root with standard Swift convention rules. Integrate SwiftLint so it runs as part of the build and violations cause a build failure.
 
 **Acceptance Criteria:**
-- [ ] `.swiftlint.yml` exists at the repo root with at minimum: `opt_in_rules`, `line_length`, `trailing_whitespace`, and `force_cast` configured.
-- [ ] Introducing a known violation (e.g., a `force_cast`) causes `swift build` to fail with a SwiftLint error.
-- [ ] Removing the violation restores a clean build.
+- [x] `.swiftlint.yml` exists at the repo root with at minimum: `opt_in_rules`, `line_length`, `trailing_whitespace`, and `force_cast` configured.
+- [x] Introducing a known violation (e.g., a `force_cast`) causes `swift build` to fail with a SwiftLint error.
+- [x] Removing the violation restores a clean build.
 
-**Status:** in-progress
+**Status:** done
 
 ---
 

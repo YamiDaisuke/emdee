@@ -1,6 +1,7 @@
 opt_in_rules:
-  - force_cast
-  - trailing_whitespace
+  - force_unwrapping
+  - empty_count
+  - closure_spacing
 
 line_length:
   warning: 120
