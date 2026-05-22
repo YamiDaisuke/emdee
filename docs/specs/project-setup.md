@@ -25,12 +25,12 @@ Establishes the SPM package structure, third-party dependencies, SwiftLint enfor
 **Description:** Create `Package.swift` declaring all targets (`emdee`, `Core`, `TUIRenderer`, `WebRenderer`) and their corresponding test targets (`CoreTests`, `TUIRendererTests`, `WebRendererTests`). Add `swift-tui` and `swift-markdown` as package dependencies. Add a minimal stub source file in each target so `swift build` completes without errors.
 
 **Acceptance Criteria:**
-- [ ] `Package.swift` declares all four library/executable targets and three test targets.
-- [ ] `swift-tui` and `swift-markdown` are listed as dependencies and resolve correctly (`swift package resolve`).
-- [ ] `swift build` succeeds with no errors.
-- [ ] `swift test` runs (zero tests is acceptable at this stage).
+- [x] `Package.swift` declares all four library/executable targets and three test targets.
+- [x] `swift-tui` and `swift-markdown` are listed as dependencies and resolve correctly (`swift package resolve`).
+- [x] `swift build` succeeds with no errors.
+- [x] `swift test` runs (zero tests is acceptable at this stage).
 
-**Status:** todo
+**Status:** done
 
 ---
 
