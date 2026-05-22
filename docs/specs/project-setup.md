@@ -43,7 +43,7 @@ Establishes the SPM package structure, third-party dependencies, SwiftLint enfor
 - [ ] Introducing a known violation (e.g., a `force_cast`) causes `swift build` to fail with a SwiftLint error.
 - [ ] Removing the violation restores a clean build.
 
-**Status:** todo
+**Status:** in-progress
 
 ---
 
