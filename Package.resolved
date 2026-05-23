@@ -20,6 +20,15 @@
       }
     },
     {
+      "identity" : "swiftlint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/SwiftLint.git",
+      "state" : {
+        "revision" : "88952528a590ed366c6f76f6bfb980b5ebdcefc1",
+        "version" : "0.63.2"
+      }
+    },
+    {
       "identity" : "swifttui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/rensbreur/SwiftTUI.git",
