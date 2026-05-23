@@ -59,7 +59,7 @@ Establishes the SPM package structure, third-party dependencies, SwiftLint enfor
 - [ ] `emdee` with no arguments prints a usage message and exits with a non-zero code.
 - [ ] `emdee --log-level invalid path/to/file.md` prints an error and exits with a non-zero code.
 
-**Status:** todo
+**Status:** in-progress
 
 ---
 
