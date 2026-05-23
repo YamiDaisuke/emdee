@@ -52,14 +52,14 @@ Establishes the SPM package structure, third-party dependencies, SwiftLint enfor
 **Description:** In `Sources/emdee/`, implement argument parsing for the three inputs: a positional path argument (single `.md` file or folder), a `--web` flag, and a `--log-level` flag (accepted values: `debug`, `info`, `warning`, `error`; default: `error`). No rendering logic yet — parse arguments and print a summary of what was received. Print a usage message and exit with a non-zero code on invalid input.
 
 **Acceptance Criteria:**
-- [ ] `emdee path/to/file.md` parses correctly and prints the resolved path and mode (single file, TUI).
-- [ ] `emdee path/to/folder` parses correctly and prints the resolved path and mode (folder, TUI).
-- [ ] `emdee path/to/folder --web` parses correctly and prints the resolved path and mode (folder, web).
-- [ ] `emdee --log-level debug path/to/file.md` parses correctly and prints the log level.
-- [ ] `emdee` with no arguments prints a usage message and exits with a non-zero code.
-- [ ] `emdee --log-level invalid path/to/file.md` prints an error and exits with a non-zero code.
+- [x] `emdee path/to/file.md` parses correctly and prints the resolved path and mode (single file, TUI).
+- [x] `emdee path/to/folder` parses correctly and prints the resolved path and mode (folder, TUI).
+- [x] `emdee path/to/folder --web` parses correctly and prints the resolved path and mode (folder, web).
+- [x] `emdee --log-level debug path/to/file.md` parses correctly and prints the log level.
+- [x] `emdee` with no arguments prints a usage message and exits with a non-zero code.
+- [x] `emdee --log-level invalid path/to/file.md` prints an error and exits with a non-zero code.
 
-**Status:** in-progress
+**Status:** done
 
 ---
 
