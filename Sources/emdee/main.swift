@@ -1,17 +1,11 @@
 import Foundation
+import Core
 
 // MARK: - Types
 
 enum Mode {
     case tui
     case web
-}
-
-enum LogLevel: String, CaseIterable {
-    case debug
-    case info
-    case warning
-    case error
 }
 
 struct ParsedArguments {

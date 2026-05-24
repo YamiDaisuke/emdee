@@ -73,7 +73,7 @@ No external API integrations.
 
 - Naming: standard Swift conventions — camelCase for variables/functions, PascalCase for types.
 - Error handling: `throws` / `try` — no `Result` wrapping unless async context requires it.
-- Logging: a simple internal logger utility with a log level settable via CLI argument. Logs are only visible in two contexts: web server mode (output to stdout) and TUI mode (via an optional debug panel). Silent in all other contexts.
+- Logging: a structured internal logger utility with a log level settable via CLI argument. Each emitted line includes ISO 8601 timestamp (millisecond precision), log level, context, `fileID:line`, and function name — all captured at the call site via Swift compiler directives (`#fileID`, `#function`, `#line`). Format: `[<timestamp>] [<LEVEL>] [<context>] <fileID>:<line> <function> — <message>`. Logs are only visible in two contexts: web server mode (output to stdout) and TUI mode (via an optional debug panel). Silent in all other contexts.
 - Formatting: SwiftLint enforced — violations fail CI.
 
 ## Revision History
