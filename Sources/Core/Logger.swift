@@ -20,7 +20,7 @@ public enum LogLevel: String, CaseIterable, Comparable {
     }
 }
 
-public enum LogContext {
+public enum LogContext: String {
     case webServer
     case tui
 }
@@ -50,6 +50,6 @@ public struct Logger {
         guard let activeContext = context, messageLevel >= self.level else { return }
         let timestamp = Self.timestampFormatter.string(from: Date())
         let level = messageLevel.rawValue.uppercased()
-        print("[\(timestamp)] [\(level)] [\(activeContext)] \(file):\(line) \(function) — \(message)")
+        print("[\(timestamp)] [\(level)] [\(activeContext.rawValue)] \(file):\(line) \(function) — \(message)")
     }
 }
