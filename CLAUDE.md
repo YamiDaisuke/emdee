@@ -91,7 +91,7 @@ Wait for confirmation on the plan before writing any file.
 - Language: Swift, SPM build system
 - Naming: camelCase for variables/functions, PascalCase for types
 - Error handling: `throws` / `try` — no `Result` wrapping unless async context requires it
-- Logging: internal logger with CLI-settable log level; logs visible only in web server mode or TUI debug panel
+- Logging: structured internal logger with CLI-settable log level; each line includes ISO 8601 timestamp, level, context, `fileID:line`, and function (via `#fileID`/`#function`/`#line`); logs visible only in web server mode or TUI debug panel
 - Formatting: SwiftLint enforced — violations fail CI
 - Dependencies: `swift-tui` (TUI), `swift-markdown` (parsing), Foundation (web server) — no others without strong justification
 

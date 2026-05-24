@@ -22,7 +22,7 @@ Establishes a `Logger` type in the `Core` module, moves the canonical `LogLevel`
 
 ### TASK-01: Define `Logger` type in `Core`
 
-**Description:** Create `Sources/Core/Logger.swift`. Move the `LogLevel` enum from `Sources/emdee/main.swift` into this new file. Define a `Logger` struct that holds the active `LogLevel` and a `LogContext` value. Expose a `log(_:level:)` method (or similar name) that compares the message level against the active level and writes to stdout only when the context permits. Update `Sources/emdee/main.swift` to remove its local `LogLevel` definition and use `Core.LogLevel` instead.
+**Description:** Create `Sources/Core/Logger.swift`. Move the `LogLevel` enum from `Sources/emdee/main.swift` into this new file. Define a `Logger` struct that holds the active `LogLevel` and a `LogContext` value. Expose a `log(_:level:file:function:line:)` method where `file`, `function`, and `line` default to `#fileID`, `#function`, and `#line` respectively so callers capture their own context automatically. When output is permitted, emit a structured line of the form `[<ISO8601ms>] [<LEVEL>] [<context>] <fileID>:<line> <function> — <message>`. Update `Sources/emdee/main.swift` to remove its local `LogLevel` definition and use `Core.LogLevel` instead.
 
 **Acceptance Criteria:**
 - [ ] `Sources/Core/Logger.swift` exists and declares `LogLevel` (cases: `debug`, `info`, `warning`, `error`) and `LogContext` (cases: `webServer`, `tui`).
@@ -51,7 +51,7 @@ Establishes a `Logger` type in the `Core` module, moves the canonical `LogLevel`
 
 ### TASK-03: Enforce output-visibility rules
 
-**Description:** `Logger.log(_:level:)` must write to stdout only when its `LogContext` is `.webServer` or `.tui`. When no context is active (i.e., the logger was constructed without a context, or with a `.none`-equivalent value), the method must produce no output regardless of the message level. The context should be supplied at construction time via `init(level:context:)`.
+**Description:** `Logger.log(_:level:file:function:line:)` must write a structured line to stdout only when its `LogContext` is `.webServer` or `.tui`. When no context is active (i.e., the logger was constructed without a context), the method must produce no output regardless of the message level. The context should be supplied at construction time via `init(level:context:)`.
 
 **Acceptance Criteria:**
 - [ ] Calling `log(_:level:)` on a `Logger` constructed without an active context produces no stdout output.
@@ -66,13 +66,13 @@ Establishes a `Logger` type in the `Core` module, moves the canonical `LogLevel`
 
 ### TASK-04: Unit tests for `Logger` in `CoreTests`
 
-**Description:** Add test cases in `Tests/CoreTests/` covering the three behavioral properties of `Logger`: level filtering, silent-by-default (no context), and output when a context is active. Use Swift Testing (`@Test`, `#expect`).
+**Description:** Add test cases in `Tests/CoreTests/` covering the three behavioral properties of `Logger`: level filtering, silent-by-default (no context), and structured output when a context is active. Capture stdout to verify the emitted line format. Use Swift Testing (`@Test`, `#expect`).
 
 **Acceptance Criteria:**
 - [ ] A test verifies that a message whose level is below the active `LogLevel` is not emitted (e.g., a `.debug` message when the active level is `.warning`).
-- [ ] A test verifies that a `Logger` with no active context (or a silent context) produces no output even for a high-severity message.
-- [ ] A test verifies that a `Logger` with context `.webServer` emits a message at or above the threshold.
-- [ ] A test verifies that a `Logger` with context `.tui` emits a message at or above the threshold.
+- [ ] A test verifies that a `Logger` with no active context produces no output even for a high-severity message.
+- [ ] A test verifies that a `Logger` with context `.webServer` emits a line containing the ISO 8601 timestamp, `WARNING` (or relevant level), `webServer`, file, line, function, and message.
+- [ ] A test verifies that a `Logger` with context `.tui` emits a line with the same structured fields.
 - [ ] `swift test` passes with all new tests green.
 - [ ] No SwiftLint violations are introduced.
 
