@@ -28,6 +28,7 @@ public enum LogContext: String {
 public struct Logger {
     private let level: LogLevel
     private let context: LogContext?
+    var outputWriter: (String) -> Void = { print($0) }
 
     private static let timestampFormatter: ISO8601DateFormatter = {
         let fmt = ISO8601DateFormatter()
@@ -50,6 +51,6 @@ public struct Logger {
         guard let activeContext = context, messageLevel >= self.level else { return }
         let timestamp = Self.timestampFormatter.string(from: Date())
         let level = messageLevel.rawValue.uppercased()
-        print("[\(timestamp)] [\(level)] [\(activeContext.rawValue)] \(file):\(line) \(function) — \(message)")
+        outputWriter("[\(timestamp)] [\(level)] [\(activeContext.rawValue)] \(file):\(line) \(function) — \(message)")
     }
 }

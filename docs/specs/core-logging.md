@@ -76,7 +76,7 @@ Establishes a `Logger` type in the `Core` module, moves the canonical `LogLevel`
 - [ ] `swift test` passes with all new tests green.
 - [ ] No SwiftLint violations are introduced.
 
-**Status:** todo
+**Status:** done
 
 ---
 
