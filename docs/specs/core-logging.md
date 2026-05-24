@@ -1,6 +1,6 @@
 # Spec: Core Logging Infrastructure
 
-Status: draft
+Status: done
 Version: v1
 
 ## Overview
