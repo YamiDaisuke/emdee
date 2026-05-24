@@ -1,5 +1,7 @@
 import Foundation
 import Core
+import TUIRenderer
+import WebRenderer
 
 // MARK: - Types
 
@@ -85,6 +87,16 @@ if commandArgs.isEmpty {
 }
 
 let parsed = parseArguments(commandArgs)
+
+let logContext: LogContext = parsed.mode == .web ? .webServer : .tui
+let logger = Logger(level: parsed.logLevel, context: logContext)
+
+switch parsed.mode {
+case .tui:
+    _ = TUIRenderer(logger: logger)
+case .web:
+    _ = WebRenderer(logger: logger)
+}
 
 let fileManager = FileManager.default
 var isDirectory: ObjCBool = false

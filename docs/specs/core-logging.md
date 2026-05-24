@@ -45,7 +45,7 @@ Establishes a `Logger` type in the `Core` module, moves the canonical `LogLevel`
 - [ ] `swift build` succeeds with no errors.
 - [ ] No SwiftLint violations are introduced.
 
-**Status:** todo
+**Status:** done
 
 ---
 
