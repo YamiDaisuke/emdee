@@ -28,7 +28,7 @@ Implements the `MarkdownDocument` model and a terminal renderer that converts pa
 - [ ] `MarkdownDocument` can be initialized from a raw string (for piped input support).
 - [ ] Invalid or unreadable files throw an error.
 
-**Status:** todo
+**Status:** done
 
 ---
 
