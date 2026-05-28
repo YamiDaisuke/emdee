@@ -36,7 +36,7 @@ public struct ANSIRenderer: MarkupVisitor {
         case 2:
             return "\(ANSI.bold)\(prefix) \(text)\(ANSI.reset)"
         case 3:
-            return "\(ANSI.bold)\(prefix) \(text)\(ANSI.reset)"
+            return "\(ANSI.bold)\(ANSI.fgCyan)\(prefix) \(text)\(ANSI.reset)"
         default:
             return "\(ANSI.dim)\(ANSI.bold)\(prefix) \(text)\(ANSI.reset)"
         }
@@ -90,10 +90,6 @@ public struct ANSIRenderer: MarkupVisitor {
             let text = item.children.map { visit($0) }.joined()
             return "  \(index + 1). \(text)"
         }.joined(separator: "\n")
-    }
-
-    public func visitListItem(_ listItem: ListItem) -> String {
-        listItem.children.map { visit($0) }.joined()
     }
 
     public func visitSoftBreak(_ softBreak: SoftBreak) -> String {
