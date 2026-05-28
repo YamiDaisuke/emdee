@@ -1,6 +1,6 @@
 # Spec: Core Logging Infrastructure
 
-Status: draft
+Status: done
 Version: v1
 
 ## Overview
@@ -60,7 +60,7 @@ Establishes a `Logger` type in the `Core` module, moves the canonical `LogLevel`
 - [ ] Messages below the active `LogLevel` are never written, regardless of context.
 - [ ] No SwiftLint violations are introduced.
 
-**Status:** todo
+**Status:** done
 
 ---
 
@@ -76,7 +76,7 @@ Establishes a `Logger` type in the `Core` module, moves the canonical `LogLevel`
 - [ ] `swift test` passes with all new tests green.
 - [ ] No SwiftLint violations are introduced.
 
-**Status:** todo
+**Status:** done
 
 ---
 
