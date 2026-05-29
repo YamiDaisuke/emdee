@@ -16,19 +16,32 @@ public struct ANSIRenderer: MarkupVisitor {
     public init() {}
 
     public func render(_ document: MarkdownDocument) -> String {
-        visit(document.document)
+        var renderer = self
+        return renderer.visit(document.document)
     }
 
-    public func defaultVisit(_ markup: any Markup) -> String {
-        markup.children.map { visit($0) }.joined()
+    public mutating func defaultVisit(_ markup: any Markup) -> String {
+        var results: [String] = []
+        for child in markup.children {
+            results.append(visit(child))
+        }
+        return results.joined()
     }
 
-    public func visitDocument(_ document: Document) -> String {
-        document.children.map { visit($0) }.joined(separator: "\n")
+    public mutating func visitDocument(_ document: Document) -> String {
+        var results: [String] = []
+        for child in document.children {
+            results.append(visit(child))
+        }
+        return results.joined(separator: "\n")
     }
 
-    public func visitHeading(_ heading: Heading) -> String {
-        let text = heading.children.map { visit($0) }.joined()
+    public mutating func visitHeading(_ heading: Heading) -> String {
+        var results: [String] = []
+        for child in heading.children {
+            results.append(visit(child))
+        }
+        let text = results.joined()
         let prefix = String(repeating: "#", count: heading.level)
         switch heading.level {
         case 1:
@@ -42,27 +55,39 @@ public struct ANSIRenderer: MarkupVisitor {
         }
     }
 
-    public func visitParagraph(_ paragraph: Paragraph) -> String {
-        paragraph.children.map { visit($0) }.joined()
+    public mutating func visitParagraph(_ paragraph: Paragraph) -> String {
+        var results: [String] = []
+        for child in paragraph.children {
+            results.append(visit(child))
+        }
+        return results.joined()
     }
 
-    public func visitText(_ text: Text) -> String {
+    public mutating func visitText(_ text: Text) -> String {
         text.string
     }
 
-    public func visitStrong(_ strong: Strong) -> String {
-        "\(ANSI.bold)\(strong.children.map { visit($0) }.joined())\(ANSI.reset)"
+    public mutating func visitStrong(_ strong: Strong) -> String {
+        var results: [String] = []
+        for child in strong.children {
+            results.append(visit(child))
+        }
+        return "\(ANSI.bold)\(results.joined())\(ANSI.reset)"
     }
 
-    public func visitEmphasis(_ emphasis: Emphasis) -> String {
-        "\(ANSI.italic)\(emphasis.children.map { visit($0) }.joined())\(ANSI.reset)"
+    public mutating func visitEmphasis(_ emphasis: Emphasis) -> String {
+        var results: [String] = []
+        for child in emphasis.children {
+            results.append(visit(child))
+        }
+        return "\(ANSI.italic)\(results.joined())\(ANSI.reset)"
     }
 
-    public func visitInlineCode(_ inlineCode: InlineCode) -> String {
+    public mutating func visitInlineCode(_ inlineCode: InlineCode) -> String {
         "\(ANSI.bgDarkGray)\(ANSI.fgCyan)\(inlineCode.code)\(ANSI.reset)"
     }
 
-    public func visitCodeBlock(_ codeBlock: CodeBlock) -> String {
+    public mutating func visitCodeBlock(_ codeBlock: CodeBlock) -> String {
         let code = codeBlock.code.hasSuffix("\n")
             ? String(codeBlock.code.dropLast())
             : codeBlock.code
@@ -71,36 +96,52 @@ public struct ANSIRenderer: MarkupVisitor {
             .joined(separator: "\n")
     }
 
-    public func visitBlockQuote(_ blockQuote: BlockQuote) -> String {
-        let inner = blockQuote.children.map { visit($0) }.joined(separator: "\n")
+    public mutating func visitBlockQuote(_ blockQuote: BlockQuote) -> String {
+        var results: [String] = []
+        for child in blockQuote.children {
+            results.append(visit(child))
+        }
+        let inner = results.joined(separator: "\n")
         return inner.components(separatedBy: "\n")
             .map { "\(ANSI.dim)│\(ANSI.reset) \($0)" }
             .joined(separator: "\n")
     }
 
-    public func visitUnorderedList(_ unorderedList: UnorderedList) -> String {
-        unorderedList.children.map { item -> String in
-            let text = item.children.map { visit($0) }.joined()
-            return "  • \(text)"
-        }.joined(separator: "\n")
+    public mutating func visitUnorderedList(_ unorderedList: UnorderedList) -> String {
+        var items: [String] = []
+        for item in unorderedList.children {
+            var childResults: [String] = []
+            for child in item.children {
+                childResults.append(visit(child))
+            }
+            items.append("  • \(childResults.joined())")
+        }
+        return items.joined(separator: "\n")
     }
 
-    public func visitOrderedList(_ orderedList: OrderedList) -> String {
-        orderedList.children.enumerated().map { index, item -> String in
-            let text = item.children.map { visit($0) }.joined()
-            return "  \(index + 1). \(text)"
-        }.joined(separator: "\n")
+    public mutating func visitOrderedList(_ orderedList: OrderedList) -> String {
+        var items: [String] = []
+        var index = 1
+        for item in orderedList.children {
+            var childResults: [String] = []
+            for child in item.children {
+                childResults.append(visit(child))
+            }
+            items.append("  \(index). \(childResults.joined())")
+            index += 1
+        }
+        return items.joined(separator: "\n")
     }
 
-    public func visitSoftBreak(_ softBreak: SoftBreak) -> String {
+    public mutating func visitSoftBreak(_ softBreak: SoftBreak) -> String {
         "\n"
     }
 
-    public func visitLineBreak(_ lineBreak: LineBreak) -> String {
+    public mutating func visitLineBreak(_ lineBreak: LineBreak) -> String {
         "\n"
     }
 
-    public func visitThematicBreak(_ thematicBreak: ThematicBreak) -> String {
+    public mutating func visitThematicBreak(_ thematicBreak: ThematicBreak) -> String {
         String(repeating: "─", count: 40)
     }
 }
