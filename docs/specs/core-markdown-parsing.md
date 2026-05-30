@@ -45,7 +45,7 @@ Implements the `MarkdownDocument` model and a terminal renderer that converts pa
 - [ ] Blockquotes render with a leading `│` or equivalent indicator.
 - [ ] Unordered and ordered lists render with correct indentation and markers.
 
-**Status:** todo
+**Status:** done
 
 ---
 
