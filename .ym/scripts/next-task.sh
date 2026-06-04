@@ -1,23 +1,30 @@
 #!/bin/bash
-# Scans all specs in docs/specs/
-# Prints the first task with status: todo
-# Format: [spec-file] TASK-XX: description
+# Prints the earliest-created To Do ticket in tasklin (ordered by created_at)
+# Format: #<id> <title>
 
-SPECS_DIR="docs/specs"
+TICKETS_DIR=".todo/tickets"
 
-if [ ! -d "$SPECS_DIR" ]; then
-  echo "Error: $SPECS_DIR not found"
+if [ ! -d "$TICKETS_DIR" ]; then
+  echo "Error: .todo/tickets/ not found. Run 'tasklin init' first."
   exit 1
 fi
 
-for spec in "$SPECS_DIR"/*.md; do
-  [ -f "$spec" ] || continue
-  task=$(grep -B5 "^\*\*Status:\*\* todo" "$spec" | grep "^### TASK-" | tail -1)
-  if [ -n "$task" ]; then
-    title=$(echo "$task" | sed 's/^### //')
-    echo "[$spec] $title"
-    exit 0
-  fi
-done
+# For each To Do ticket, emit: created_at<TAB>id<TAB>title
+# ISO 8601 timestamps sort lexicographically, so plain sort gives chronological order.
+result=$(for f in "$TICKETS_DIR"/*.yaml; do
+  [ -f "$f" ] || continue
+  grep -q "^status: To Do" "$f" || continue
+  id=$(grep "^id:" "$f" | awk '{print $2}')
+  title=$(grep "^title:" "$f" | sed "s/^title: //; s/^'//; s/'$//")
+  created=$(grep "^created_at:" "$f" | awk '{print $2}')
+  printf "%s\t%s\t%s\n" "$created" "$id" "$title"
+done | sort | head -1)
 
-echo "No tasks with status: todo"
+if [ -z "$result" ]; then
+  echo "No tickets with status: To Do"
+  exit 0
+fi
+
+id=$(printf "%s" "$result" | awk -F'\t' '{print $2}')
+title=$(printf "%s" "$result" | awk -F'\t' '{print $3}')
+echo "#$id $title"

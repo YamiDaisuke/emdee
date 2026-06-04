@@ -35,15 +35,11 @@ Version: v1
 **Acceptance Criteria:**
 - [ ] {ACCEPTANCE_CRITERION}
 
-**Status:** todo
-
-<!-- Status values: todo | in-progress | done. A task stays in-progress as long as any work remains (dev, QA, bug fixing). -->
-
 ---
 
 ## Ticket Tracker
 
-<!-- Map each task to its ID in your ticket tracking system. -->
+<!-- Map each task to its tasklin ID. Run: tasklin add '<task-title>' and record the returned hex ID (e.g. ab3f92c1). -->
 
 | Task | Ticket ID |
 |------|-----------|
