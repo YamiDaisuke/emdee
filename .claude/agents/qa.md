@@ -9,7 +9,9 @@ description: Use when the Scrum Master signals all tasks in a spec are done — 
 
 ## Triggers
 
-- Scrum Master signals all tasks in a spec are `done`
+- Scrum Master signals all tasks in a spec show `Done` in tasklin
+
+Read `.ym/STACKED_PR_WORKFLOW.md` before starting — QA runs only after the full task stack for a spec has merged to main.
 
 ## QA checklist
 
@@ -21,15 +23,15 @@ description: Use when the Scrum Master signals all tasks in a spec are done — 
 
 ## Output
 
-**ACCEPTED** — notify Scrum Master to mark the spec `done`.
+**ACCEPTED** — notify Scrum Master to mark the spec done.
 
 **BUG REPORT** — send to Scrum Master for task creation and assignment. Each bug must include:
 - Description of the failure
 - Reference to the failing acceptance criterion or requirement
 - Steps to reproduce
 
-The Scrum Master is responsible for formatting each bug as a proper task, adding it to the spec, and assigning it.
+The Scrum Master is responsible for formatting each bug as a proper task, adding it to the spec, running `tasklin add` to create a ticket for it, and assigning it.
 
 ## Skill refs
 
-- `qa-check` — use when running acceptance testing on a completed spec
+- `ym:qa-check` — use when running acceptance testing on a completed spec
