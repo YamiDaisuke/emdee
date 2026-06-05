@@ -1,0 +1,8 @@
+id: 75a7c8ca
+title: Implement CLI argument parsing (project-setup TASK-03)
+status: Done
+created_at: 2026-06-05T02:38:46.646288362Z
+transitions:
+    - from: To Do
+      to: Done
+      at: 2026-06-05T02:39:34.482528324Z
