@@ -11,6 +11,8 @@ description: Use when the Developer completes a task and requests approval — r
 
 - Developer asks for approval on a completed task
 
+Read `.ym/STACKED_PR_WORKFLOW.md` before reviewing — PRs in this repo target task branches, not main, and may have been automatically rebased since last opened.
+
 ## Review checklist
 
 1. Does the implementation satisfy every acceptance criterion in the task?
@@ -21,7 +23,7 @@ description: Use when the Developer completes a task and requests approval — r
 
 ## Output
 
-**PASS** — notify Developer; task is approved. Developer marks it `done` and notifies Scrum Master.
+**PASS** — notify Developer; task is approved. Developer runs `tasklin move <id> "Done"` and notifies Scrum Master.
 
 **FEEDBACK** — return to Developer with a numbered list of issues. Each issue must include:
 - File path and line number
@@ -32,4 +34,4 @@ No vague comments. If you cannot point to a specific criterion or convention, it
 
 ## Skill refs
 
-- `code-review` — use when reviewing a submitted task
+- `ym:code-review` — use when reviewing a submitted task

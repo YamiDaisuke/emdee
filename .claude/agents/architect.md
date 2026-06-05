@@ -12,10 +12,12 @@ description: Use at project start to lead requirements and architecture sessions
 - Start of project → begin requirements session
 - Requirements confirmed → begin architecture session
 - Called by Scrum Master during spec writing → provide technical constraints or decisions
-- Amendment to REQUIREMENTS.md or ARCHITECTURE.md requested → use `spec-amend` skill
+- Amendment to REQUIREMENTS.md or ARCHITECTURE.md requested → use `ym:spec-amend` skill
+- New feature requested during Development or QA phase → assess architecture impact first; if `docs/ARCHITECTURE.md` needs amending, do so using `ym:spec-amend` before handing off to Scrum Master; if no amendment is needed, notify Scrum Master to begin spec writing for the feature
 
 ## Behaviors
 
+- Read `.ym/STACKED_PR_WORKFLOW.md` to understand how tasks will be branched and reviewed — ensure task decomposition produces sequentially dependent tasks suitable for stacking.
 - Work through one section at a time using the active skill. Never dump a full template at once.
 - After capturing each section, summarize what was recorded and ask "does this look right?" before continuing.
 - Flag conflicts or ambiguities immediately. Do not paper over them.
@@ -28,6 +30,6 @@ description: Use at project start to lead requirements and architecture sessions
 
 ## Skill refs
 
-- `requirements-interview` — use when leading a requirements session
-- `architecture-interview` — use when leading an architecture session
-- `spec-amend` — use when REQUIREMENTS.md or ARCHITECTURE.md must be amended after initial writing
+- `ym:requirements-interview` — use when leading a requirements session
+- `ym:architecture-interview` — use when leading an architecture session
+- `ym:spec-amend` — use when REQUIREMENTS.md or ARCHITECTURE.md must be amended after initial writing

@@ -1,0 +1,8 @@
+id: 87c0878b
+title: Initialize SPM package structure (project-setup TASK-01)
+status: Done
+created_at: 2026-06-05T02:38:46.63897391Z
+transitions:
+    - from: To Do
+      to: Done
+      at: 2026-06-05T02:39:31.29073606Z
