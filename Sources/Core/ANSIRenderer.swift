@@ -15,6 +15,13 @@ public struct ANSIRenderer: MarkupVisitor {
 
     public init() {}
 
+    private func plainText(from markup: any Markup) -> String {
+        if let text = markup as? Text {
+            return text.string
+        }
+        return markup.children.map { plainText(from: $0) }.joined()
+    }
+
     public func render(_ document: MarkdownDocument) -> String {
         var renderer = self
         return renderer.visit(document.document)
@@ -131,6 +138,62 @@ public struct ANSIRenderer: MarkupVisitor {
             index += 1
         }
         return items.joined(separator: "\n")
+    }
+
+    public mutating func visitTable(_ table: Table) -> String {
+        let headRows = table.head.children.compactMap { $0 as? Table.Row }
+        let bodyRows = table.body.children.compactMap { $0 as? Table.Row }
+        let allRows = headRows + bodyRows
+        guard !allRows.isEmpty else { return "" }
+
+        let cellTexts: [[String]] = allRows.map { row in
+            row.children.compactMap { $0 as? Table.Cell }.map { plainText(from: $0) }
+        }
+        let columnWidths = computeColumnWidths(from: cellTexts)
+        guard !columnWidths.isEmpty else { return "" }
+
+        var lines: [String] = []
+        lines.append(tableSeparator(columnWidths: columnWidths, left: "┌", mid: "┬", right: "┐"))
+        for rowIdx in headRows.indices {
+            lines.append(tableRow(cellTexts[rowIdx], columnWidths: columnWidths, bold: true))
+        }
+        if !headRows.isEmpty {
+            lines.append(tableSeparator(columnWidths: columnWidths, left: "├", mid: "┼", right: "┤"))
+        }
+        let headCount = headRows.count
+        for rowIdx in bodyRows.indices {
+            lines.append(tableRow(cellTexts[headCount + rowIdx], columnWidths: columnWidths, bold: false))
+        }
+        lines.append(tableSeparator(columnWidths: columnWidths, left: "└", mid: "┴", right: "┘"))
+        return lines.joined(separator: "\n")
+    }
+
+    private func computeColumnWidths(from cellTexts: [[String]]) -> [Int] {
+        let columnCount = cellTexts.map(\.count).max() ?? 0
+        guard columnCount > 0 else { return [] }
+        var widths = Array(repeating: 0, count: columnCount)
+        for row in cellTexts {
+            for (idx, text) in row.enumerated() where idx < columnCount {
+                widths[idx] = max(widths[idx], text.count)
+            }
+        }
+        return widths
+    }
+
+    private func tableSeparator(columnWidths: [Int], left: String, mid: String, right: String) -> String {
+        let inner = columnWidths.map { String(repeating: "─", count: $0 + 2) }.joined(separator: mid)
+        let line = left + inner + right
+        return line.count > 80 ? String(line.prefix(80)) : line
+    }
+
+    private func tableRow(_ cells: [String], columnWidths: [Int], bold: Bool) -> String {
+        let parts = columnWidths.indices.map { idx -> String in
+            let text = idx < cells.count ? cells[idx] : ""
+            let padded = text + String(repeating: " ", count: max(0, columnWidths[idx] - text.count))
+            return bold ? " \(ANSI.bold)\(padded)\(ANSI.reset) " : " \(padded) "
+        }
+        let line = "│" + parts.joined(separator: "│") + "│"
+        return line.count > 80 ? String(line.prefix(80)) : line
     }
 
     public mutating func visitSoftBreak(_ softBreak: SoftBreak) -> String {

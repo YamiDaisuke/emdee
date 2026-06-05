@@ -58,7 +58,7 @@ Implements the `MarkdownDocument` model and a terminal renderer that converts pa
 - [ ] Tables with varying column widths align correctly.
 - [ ] A table wider than the terminal width does not crash — it truncates or wraps gracefully.
 
-**Status:** todo
+**Status:** done
 
 ---
 
