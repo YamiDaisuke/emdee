@@ -80,10 +80,10 @@ Implements automatic detection of file and directory changes. When a watched fil
 
 | Task    | Ticket ID |
 |---------|-----------|
-| TASK-01 | N/A       |
-| TASK-02 | N/A       |
-| TASK-03 | N/A       |
-| TASK-04 | N/A       |
+| TASK-01 | de1ca1d7  |
+| TASK-02 | 5faa4dea  |
+| TASK-03 | 8e269fbe  |
+| TASK-04 | 74ab3a43  |
 
 ## Revision History
 

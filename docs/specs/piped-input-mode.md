@@ -50,8 +50,8 @@ Implements support for piped stdin: when `emdee` receives markdown content via a
 
 | Task    | Ticket ID |
 |---------|-----------|
-| TASK-01 | N/A       |
-| TASK-02 | N/A       |
+| TASK-01 | 66db6516  |
+| TASK-02 | d70b03b1  |
 
 ## Revision History
 
