@@ -127,13 +127,13 @@ Implements the `--web` mode: a local HTTP server (Foundation-based) that serves 
 
 | Task    | Ticket ID |
 |---------|-----------|
-| TASK-01 | N/A       |
-| TASK-02 | N/A       |
-| TASK-03 | N/A       |
-| TASK-04 | N/A       |
-| TASK-05 | N/A       |
-| TASK-06 | N/A       |
-| TASK-07 | N/A       |
+| TASK-01 | 4a207bee  |
+| TASK-02 | ce188ab8  |
+| TASK-03 | a94e745c  |
+| TASK-04 | 50062504  |
+| TASK-05 | 8c599321  |
+| TASK-06 | 55f0c79a  |
+| TASK-07 | 59f8444e  |
 
 ## Revision History
 

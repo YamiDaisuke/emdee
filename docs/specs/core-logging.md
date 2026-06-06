@@ -84,10 +84,10 @@ Establishes a `Logger` type in the `Core` module, moves the canonical `LogLevel`
 
 | Task    | Ticket ID |
 |---------|-----------|
-| TASK-01 | N/A       |
-| TASK-02 | N/A       |
-| TASK-03 | N/A       |
-| TASK-04 | N/A       |
+| TASK-01 | 138f060f  |
+| TASK-02 | d1554293  |
+| TASK-03 | 9220a2e8  |
+| TASK-04 | e5efd8ef  |
 
 ## Revision History
 

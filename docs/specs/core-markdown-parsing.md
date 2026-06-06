@@ -79,10 +79,10 @@ Implements the `MarkdownDocument` model and a terminal renderer that converts pa
 
 | Task    | Ticket ID |
 |---------|-----------|
-| TASK-01 | N/A       |
-| TASK-02 | N/A       |
-| TASK-03 | N/A       |
-| TASK-04 | N/A       |
+| TASK-01 | 500658e0  |
+| TASK-02 | 0d9ca1f2  |
+| TASK-03 | 42602615  |
+| TASK-04 | 1cc6263d  |
 
 ## Revision History
 

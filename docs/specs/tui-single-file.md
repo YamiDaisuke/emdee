@@ -63,9 +63,9 @@ Implements the swift-tui application shell and basic single-file display mode. W
 
 | Task    | Ticket ID |
 |---------|-----------|
-| TASK-01 | N/A       |
-| TASK-02 | N/A       |
-| TASK-03 | N/A       |
+| TASK-01 | 428363b2  |
+| TASK-02 | b9d3b69e  |
+| TASK-03 | 152aa8a4  |
 
 ## Revision History
 

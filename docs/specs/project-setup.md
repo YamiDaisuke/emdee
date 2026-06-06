@@ -67,9 +67,9 @@ Establishes the SPM package structure, third-party dependencies, SwiftLint enfor
 
 | Task    | Ticket ID |
 |---------|-----------|
-| TASK-01 | N/A       |
-| TASK-02 | N/A       |
-| TASK-03 | N/A       |
+| TASK-01 | 87c0878b  |
+| TASK-02 | 9aceecfc  |
+| TASK-03 | 75a7c8ca  |
 
 ## Revision History
 

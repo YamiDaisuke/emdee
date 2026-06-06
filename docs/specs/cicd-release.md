@@ -70,9 +70,9 @@ Sets up the GitHub Actions pipeline and release process for `emdee`. Tests run o
 
 | Task    | Ticket ID |
 |---------|-----------|
-| TASK-01 | N/A       |
-| TASK-02 | N/A       |
-| TASK-03 | N/A       |
+| TASK-01 | ede159f8  |
+| TASK-02 | ac830520  |
+| TASK-03 | 40afea0c  |
 
 ## Revision History
 

@@ -81,10 +81,10 @@ Extends the TUI application to support folder mode: a sidebar showing the `FileN
 
 | Task    | Ticket ID |
 |---------|-----------|
-| TASK-01 | N/A       |
-| TASK-02 | N/A       |
-| TASK-03 | N/A       |
-| TASK-04 | N/A       |
+| TASK-01 | 8b2e2781  |
+| TASK-02 | 4d68c9f7  |
+| TASK-03 | 168e9961  |
+| TASK-04 | 8027b2a7  |
 
 ## Revision History
 

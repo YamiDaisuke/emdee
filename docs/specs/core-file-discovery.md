@@ -64,9 +64,9 @@ Implements recursive `.md` file discovery and the `FileNode` model that represen
 
 | Task    | Ticket ID |
 |---------|-----------|
-| TASK-01 | N/A       |
-| TASK-02 | N/A       |
-| TASK-03 | N/A       |
+| TASK-01 | ec0653c4  |
+| TASK-02 | 95eb1fe7  |
+| TASK-03 | 058b9dfa  |
 
 ## Revision History
 
