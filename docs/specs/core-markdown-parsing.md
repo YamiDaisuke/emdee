@@ -1,6 +1,6 @@
 # Spec: Core: Markdown Parsing
 
-Status: draft
+Status: in progress
 Version: v1
 
 ## Overview
@@ -24,9 +24,9 @@ Implements the `MarkdownDocument` model and a terminal renderer that converts pa
 **Description:** In `Sources/Core/`, define a `MarkdownDocument` struct that wraps the output of `swift-markdown`'s parser. It should hold the parsed document and expose the source file path.
 
 **Acceptance Criteria:**
-- [ ] `MarkdownDocument` can be initialized from a file path and parses the file using `swift-markdown`.
-- [ ] `MarkdownDocument` can be initialized from a raw string (for piped input support).
-- [ ] Invalid or unreadable files throw an error.
+- [x] `MarkdownDocument` can be initialized from a file path and parses the file using `swift-markdown`.
+- [x] `MarkdownDocument` can be initialized from a raw string (for piped input support).
+- [x] Invalid or unreadable files throw an error.
 
 **Status:** done
 
@@ -37,13 +37,13 @@ Implements the `MarkdownDocument` model and a terminal renderer that converts pa
 **Description:** In `Sources/Core/`, implement a renderer that walks `swift-markdown` document nodes and produces an ANSI-styled string. Must handle: headings (H1–H4), bold, italic, inline code, fenced code blocks, blockquotes, and unordered/ordered lists.
 
 **Acceptance Criteria:**
-- [ ] H1 renders visually distinct from H2, H3, H4 (e.g., via ANSI bold and/or sizing cues).
-- [ ] Bold text renders with ANSI bold.
-- [ ] Italic text renders with ANSI italic.
-- [ ] Inline code renders with a distinct style (e.g., highlighted background or color).
-- [ ] Fenced code blocks render with a distinct style and preserve whitespace.
-- [ ] Blockquotes render with a leading `│` or equivalent indicator.
-- [ ] Unordered and ordered lists render with correct indentation and markers.
+- [x] H1 renders visually distinct from H2, H3, H4 (e.g., via ANSI bold and/or sizing cues).
+- [x] Bold text renders with ANSI bold.
+- [x] Italic text renders with ANSI italic.
+- [x] Inline code renders with a distinct style (e.g., highlighted background or color).
+- [x] Fenced code blocks render with a distinct style and preserve whitespace.
+- [x] Blockquotes render with a leading `│` or equivalent indicator.
+- [x] Unordered and ordered lists render with correct indentation and markers.
 
 **Status:** done
 
@@ -54,9 +54,9 @@ Implements the `MarkdownDocument` model and a terminal renderer that converts pa
 **Description:** Extend the terminal renderer to handle markdown tables. Columns should be aligned and the output should be readable at typical terminal widths.
 
 **Acceptance Criteria:**
-- [ ] A markdown table renders with column separators and aligned content.
-- [ ] Tables with varying column widths align correctly.
-- [ ] A table wider than the terminal width does not crash — it truncates or wraps gracefully.
+- [x] A markdown table renders with column separators and aligned content.
+- [x] Tables with varying column widths align correctly.
+- [x] A table wider than the terminal width does not crash — it truncates or wraps gracefully.
 
 **Status:** done
 

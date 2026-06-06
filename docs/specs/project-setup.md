@@ -1,6 +1,6 @@
 # Spec: Project Setup
 
-Status: draft
+Status: done
 Version: v1
 
 ## Overview
