@@ -8,26 +8,13 @@ description: Execute or assign an atomic spec task — Developer implements and 
 
 **Input:** A spec file with at least one task at status `To Do` in tasklin.
 
-## Git Workflow (Developer)
+## Git Workflow
 
-Before starting any task, create a fresh branch from main:
-
-```bash
-git checkout main && git pull origin main
-git checkout -b <prefix>/<task-slug>
-```
-
-Branch name format: `<prefix>/<kebab-task-title>` — e.g., `feat/user-auth-endpoint`, `fix/token-expiry-bug`.
-
-Commit format: `<prefix>: <imperative summary>` — e.g., `feat: add user auth endpoint`.
-
-Allowed prefixes: `feat`, `fix`, `chore`, `refactor`, `test`, `docs`, `style`, `ci`.
-
-The prefix must match the semantic prefix in the task title.
+Branch naming, PR targeting, and stacking rules are defined in `.ym/STACKED_PR_WORKFLOW.md` and take precedence over any example in this file.
 
 ## Process (Developer — executing a task)
 
-1. Create a fresh branch from main (see Git Workflow above).
+1. Create the branch as instructed by the Scrum Master — see `.ym/STACKED_PR_WORKFLOW.md` for naming and stacking rules.
 2. Read the full spec file end to end.
 3. Read `docs/ARCHITECTURE.md` for conventions.
 4. Run `tasklin move <id> "In Progress"` (look up the tasklin ID in the spec's Ticket Tracker table).
@@ -39,8 +26,9 @@ The prefix must match the semantic prefix in the task title.
 ## Process (Scrum Master — assigning a task)
 
 1. Find the next task with status `To Do` by running `next-task.sh` or checking `tasklin`.
-2. Assign it to the Developer: provide the spec file path and task ID.
-3. Do not assign another task until the current one reaches `done`.
+2. Read `.ym/STACKED_PR_WORKFLOW.md`; derive (a) the exact branch name to create and (b) the exact PR target branch (previous task branch for task/NN > 01, or `main` for task/01).
+3. Assign it to the Developer: provide the spec file path, task ID, branch name, and PR target branch.
+4. Do not assign another task until the current one reaches `done`.
 
 ## Output
 
