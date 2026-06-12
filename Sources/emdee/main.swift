@@ -91,32 +91,21 @@ let parsed = parseArguments(commandArgs)
 let logContext: LogContext = parsed.mode == .web ? .webServer : .tui
 let logger = Logger(level: parsed.logLevel, context: logContext)
 
-switch parsed.mode {
-case .tui:
-    _ = TUIRenderer(logger: logger)
-case .web:
-    _ = WebRenderer(logger: logger)
-}
-
 let fileManager = FileManager.default
 var isDirectory: ObjCBool = false
 _ = fileManager.fileExists(atPath: parsed.path, isDirectory: &isDirectory)
 
-let pathKind: String
-if isDirectory.boolValue {
-    pathKind = "folder"
-} else {
-    pathKind = "single file"
-}
-
-let modeName: String
 switch parsed.mode {
 case .tui:
-    modeName = "TUI"
+    let renderer = TUIRenderer(logger: logger)
+    if !isDirectory.boolValue {
+        do {
+            try renderer.renderFile(at: parsed.path)
+        } catch {
+            fputs("Error: \(error.localizedDescription)\n", stderr)
+            exit(1)
+        }
+    }
 case .web:
-    modeName = "web"
+    _ = WebRenderer(logger: logger)
 }
-
-print("Path: \(parsed.path)")
-print("Mode: \(pathKind), \(modeName)")
-print("Log level: \(parsed.logLevel.rawValue)")
